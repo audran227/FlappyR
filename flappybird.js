@@ -239,7 +239,7 @@ function moveBird(e) {
 //}
 // Avec cette nouvelle fonction
 function detectCollision(a, b) {
-    let hitboxReduction = 0.07;  // réduction de 7% de la hitbox
+    let hitboxReduction = 0.08;  // réduction de 7% de la hitbox
     let hitboxWidth = a.width * hitboxReduction;
     let hitboxHeight = a.height * hitboxReduction;
 
