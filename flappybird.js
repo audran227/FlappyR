@@ -21,26 +21,6 @@ let bird = {
     width : birdWidth,
     height : birdHeight
 }
-// Ajoutez gameTitle à votre objet de jeu global
-let gameTitle = {
-    img: new Image(),
-    x: boardWidth / 2,
-    y: boardHeight / 3,
-    velocityX: -2,
-};
-
-gameTitle.img.src = './start.png';
-
-let logoWidth = 150;  // changez cette valeur selon la taille désirée
-let logoHeight = 75; // changez cette valeur selon la taille désirée
-
-// Ajoutez cette nouvelle fonction pour dessiner le titre du jeu
-function drawGameTitle() {
-    context.fillStyle = "black";
-    context.font = "40px sans-serif";
-    context.textAlign = "center";
-    context.fillText(gameTitle.text, gameTitle.x, gameTitle.y);
-}
 
 //pipes
 let pipeArray = [];
@@ -107,32 +87,20 @@ function update() {
         drawGameTitle();
         gameTitle.x += gameTitle.velocityX;
     }
-    function drawGameTitle() {
-        context.drawImage(gameTitle.img, gameTitle.x, gameTitle.y, logoWidth, logoHeight);
-        // On fait glisser le titre vers la gauche seulement si la partie n'a pas commencé
-        if (score === 0 && !gameOver) {
-            gameTitle.x += gameTitle.velocityX;
-        }
     }
     // Lorsqu'une touche est enfoncée pour commencer le jeu, déplacez le titre du jeu vers la gauche
     function moveBird(e) {
         if (e.code == "Space" || e.code == "ArrowUp" || e.code == "KeyX") {
             //jump
             velocityY = -7;
-            gameTitle.velocityX = -4; // Faites glisser le titre vers la gauche
-
             //reset game
             if (gameOver) {
                 bird.y = birdY;
                 pipeArray = [];
                 score = 0;
                 gameOver = false;
-                gameTitle.x = boardWidth / 2; // Réinitialiser la position du titre
-                gameTitle.velocityX = 0; // Arrêter le mouvement du titre
-            }else {
-            // If game is not over, move the title
-            gameTitle.velocityX = -4;
-        }
+
+            }
 
         }
     }
